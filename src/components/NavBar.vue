@@ -5,7 +5,7 @@
         <li><router-link class="link" :class="{ active: $route.name === 'about' }" to="/about">About</router-link></li>
         <li><router-link class="link" :class="{ active: $route.name === 'accessories' }" to="/accessories">Accessories</router-link></li>
         <li><router-link class="link" :class="{ active: $route.name === 'souvenirs' }" to="/souvenirs">Souvenirs</router-link></li>
-        <li><router-link class="link" :class="{ active: $route.name === 'vue-app' }" to="/vue-app">Vue App</router-link></li>
+        <!-- <li><router-link class="link" :class="{ active: $route.name === 'vue-app' }" to="/vue-app">Vue App</router-link></li> -->
       </ul>
     </nav>
   </template>

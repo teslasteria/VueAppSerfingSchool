@@ -1,158 +1,107 @@
-<script>
+<script> 
+import { ref, reactive } from 'vue'
 import NavBar from '@/components/NavBar.vue'
 import AppFooter from '@/components/AppFooter.vue'
 export default {
   name: 'VueAppView',
   components: {
     NavBar,
-    AppFooter
-  }
-}
-    const { createApp } = 'vue';
+    AppFooter,
+    setup() {
+        const message = ref('Hello Vue!')
+        const imageSrc = ref(require('@/assets/img/Colorful Surfboards at a Tropical Beach.jpeg'))
+        const isActive = ref(true)
+        const hasError = ref(false)
+            
+        // Массив продуктов
+        const products = reactive([
+            {
+                id: 1,
+                name: 'Pro Surfboard',
+                price: 599.99,
+                description: 'High-performance surfboard for experienced surfers',
+                image: require('@/assets/img/Colorful Surfboards at a Tropical Beach.jpeg')
+            },
+            {
+                id: 2,
+                name: 'Beginner Surfboard',
+                price: 299.99,
+                description: 'Stable and easy to use for beginners',
+                image: require('@/assets/img/Sunny Beach Serenity.jpeg')
+            },
+            {
+                id: 3,
+                name: 'Wetsuit',
+                price: 149.99,
+                description: '3mm neoprene wetsuit for warm waters',
+                image: require('@/assets/img/wetsuit.jpg')
+            },
+            {
+                id: 4,
+                name: 'Surfboard Leash',
+                price: 39.99,
+                description: 'Keeps your board close when you fall',
+                image: require('@/assets/img/leash.jpg')
+            },
+            {
+                id: 5,
+                name: 'Surf Wax',
+                price: 9.99,
+                description: 'Provides grip for your feet on the board',
+                image: require('@/assets/img/wax.jpg')
+            },
+            {
+                id: 6,
+                name: 'Surfboard Bag',
+                price: 89.99,
+                description: 'Protects your board during transport',
+                image: require('@/assets/img/bag.jpg')
+            },
+            {
+                id: 7,
+                name: 'Rash Guard',
+                price: 29.99,
+                description: 'Protects from sun and rash',
+                image: require('@/assets/img/t-shirt.jpg')
+            },
+            {
+                id: 8,
+                name: 'Surf Hat',
+                price: 24.99,
+                description: 'Keeps the sun out of your eyes',
+                image: require('@/assets/img/mug.jpg')
+            },
+            {
+                id: 9,
+                name: 'Surf Sunglasses',
+                price: 59.99,
+                description: 'Polarized lenses for better visibility',
+                image: require('@/assets/img/sticker.jpg')
+            },
+            {
+                id: 10,
+                name: 'Surf Watch',
+                price: 199.99,
+                description: 'Tracks tides and surf conditions',
+                image: require('@/assets/img/Stylish Surf Shop Interior.jpeg')
+            }
+        ])
+            
+        // Корзина
+        const cart = reactive([])
+
+        // Новостные рассылки
+        const newsletters = reactive([
+        { id: 1, name: 'Monthly Surf Reports' },
+        { id: 2, name: 'Special Offers' },
+        { id: 3, name: 'Surfing Tips' },
+        { id: 4, name: 'Event Invitations' }
+        ])
+
     
-    createApp({
-        data() {
-            return {
-                // Для связывания данных
-                message: 'Hello Vue!',
-                imageSrc: 'img/Colorful Surfboards at a Tropical Beach.jpeg',
-                isActive: true,
-                hasError: false,
-                
-                // Массив продуктов
-                products: [
-                    {
-                        id: 1,
-                        name: 'Pro Surfboard',
-                        price: 599.99,
-                        description: 'High-performance surfboard for experienced surfers',
-                        image: 'img/Colorful Surfboards at a Tropical Beach.jpeg'
-                    },
-                    {
-                        id: 2,
-                        name: 'Beginner Surfboard',
-                        price: 299.99,
-                        description: 'Stable and easy to use for beginners',
-                        image: 'img/Sunny Beach Serenity.jpeg'
-                    },
-                    {
-                        id: 3,
-                        name: 'Wetsuit',
-                        price: 149.99,
-                        description: '3mm neoprene wetsuit for warm waters',
-                        image: 'img/wetsuit.jpg'
-                    },
-                    {
-                        id: 4,
-                        name: 'Surfboard Leash',
-                        price: 39.99,
-                        description: 'Keeps your board close when you fall',
-                        image: 'img/leash.jpg'
-                    },
-                    {
-                        id: 5,
-                        name: 'Surf Wax',
-                        price: 9.99,
-                        description: 'Provides grip for your feet on the board',
-                        image: 'img/wax.jpg'
-                    },
-                    {
-                        id: 6,
-                        name: 'Surfboard Bag',
-                        price: 89.99,
-                        description: 'Protects your board during transport',
-                        image: 'img/bag.jpg'
-                    },
-                    {
-                        id: 7,
-                        name: 'Rash Guard',
-                        price: 29.99,
-                        description: 'Protects from sun and rash',
-                        image: 'img/t-shirt.jpg'
-                    },
-                    {
-                        id: 8,
-                        name: 'Surf Hat',
-                        price: 24.99,
-                        description: 'Keeps the sun out of your eyes',
-                        image: 'img/mug.jpg'
-                    },
-                    {
-                        id: 9,
-                        name: 'Surf Sunglasses',
-                        price: 59.99,
-                        description: 'Polarized lenses for better visibility',
-                        image: 'img/sticker.jpg'
-                    },
-                    {
-                        id: 10,
-                        name: 'Surf Watch',
-                        price: 199.99,
-                        description: 'Tracks tides and surf conditions',
-                        image: 'img/Stylish Surf Shop Interior.jpeg'
-                    }
-                ],
-                
-                // Для корзины и условной отрисовки
-                cart: [],
-                showCart: false,
-                
-                // Для формы подписки
-                email: '',
-                selectedNewsletters: [],
-                newsletters: [
-                    { id: 1, name: 'Monthly Surf Reports' },
-                    { id: 2, name: 'Special Offers' },
-                    { id: 3, name: 'Surfing Tips' },
-                    { id: 4, name: 'Event Invitations' }
-                ],
-                submitted: false
-            };
-        },
-        computed: {
-            cartTotal() {
-                return this.cart.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2);
-            }
-        },
-        methods: {
-            // Для связывания классов
-            toggleClass() {
-                this.isActive = !this.isActive;
-                this.hasError = !this.hasError;
-            },
-            
-            // Для работы с корзиной
-            addToCart(product) {
-                const existingItem = this.cart.find(item => item.id === product.id);
-                if (existingItem) {
-                    existingItem.quantity++;
-                } else {
-                    this.cart.push({
-                        ...product,
-                        quantity: 1
-                    });
-                }
-                alert(`${product.name} added to cart!`);
-            },
-            
-            removeFromCart(index) {
-                this.cart.splice(index, 1);
-            },
-            
-            // Для формы подписки
-            submitForm() {
-                if (this.email && this.selectedNewsletters.length > 0) {
-                    this.submitted = true;
-                    // Здесь можно добавить логику отправки на сервер
-                }
-            },
-            
-            getNewsletterName(id) {
-                const newsletter = this.newsletters.find(n => n.id === id);
-                return newsletter ? newsletter.name : '';
-            }
         }
-    }).mount('#app');
+    }
+}
 </script>
 
 <template>
@@ -271,6 +220,8 @@ export default {
     </section>
 </main>
 </div>
+
+<AppFooter />
 </template>
 
 <style scoped>

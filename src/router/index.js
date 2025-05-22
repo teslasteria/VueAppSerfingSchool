@@ -10,7 +10,7 @@ const routes = [
   { path: '/about', name: 'about', component: AboutView },
   { path: '/accessories', name: 'accessories', component: AccessoriesView },
   { path: '/souvenirs', name: 'souvenirs', component: SouvenirsView },
-  // { path: '/vueApp', name: 'vueApp', component: VueAppView }
+  // { path: '/vue-app', name: 'vue-app', component: VueAppView }
 ]
 
 const router = createRouter({
